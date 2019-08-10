@@ -6,7 +6,7 @@
     pkg: "{{ item }}"
     state: present
   with_items:
-      - mariadb-server
+    - mariadb-server
     - mariadb-client
     - libmariadb-dev
     - python3-mysqldb
