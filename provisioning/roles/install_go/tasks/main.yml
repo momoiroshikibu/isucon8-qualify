@@ -28,6 +28,7 @@
   blockinfile:
     marker: "# {mark} ANSIBLE MANAGED BLOCK go"
     dest: /home/isucon/.bash_profile
+    create: yes
     content: |
       export PATH=/home/isucon/local/go/bin:/home/isucon/go/bin:$PATH
       export GOROOT=/home/isucon/local/go
@@ -55,5 +56,4 @@
     GOROOT: "/home/isucon/local/go"
   args:
     chdir: /home/isucon
-  command:
-    go get -u github.com/constabulary/gb/...
+  command: go get -u github.com/constabulary/gb/...

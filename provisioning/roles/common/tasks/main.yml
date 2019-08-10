@@ -4,7 +4,7 @@
   become_user: root
   group:
     name: isucon
-    gid: 1001
+    gid: 1002
     state: present
     system: no
 
@@ -13,7 +13,7 @@
   become_user: root
   user:
     name: isucon
-    uid: 1001
+    uid: 1002
     group: isucon
     password: isucon
     home: /home/isucon
@@ -31,45 +31,36 @@
     group: root
     mode: 0440
 
-- name: Install epel-release
-  become: yes
-  become_user: root
-  yum:
-    pkg: "{{ item }}"
-    state: installed
-  with_items:
-    - epel-release
-
 - name: Install Development Tools
   become: yes
   become_user: root
-  yum: name="{{ item }}" state=present
+  apt: name="{{ item }}" state=present
   with_items:
-    - "@Development Tools"
+    - "build-essential"
 
 - name: Install packages
   become: yes
   become_user: root
-  yum:
+  apt:
     pkg: "{{ item }}"
-    state: installed
+    state: present
   with_items:
     - autoconf
     - automake
     - curl
     - dstat
     - firewalld
-    - gdbm-devel
+    - libgdbm-dev
     - git
     - jq
-    - libffi-devel
-    - libyaml-devel
-    - ncurses-devel
-    - openssl-devel
+    - libffi-dev
+    - libyaml-dev
+    - ncurses-dev
+    - libssl1.0-dev
     - patch
-    - readline-devel
+    - libreadline-dev
     - sudo
-    - zlib-devel
+    - zlib1g-dev
 
 - name: Restart and enable firewalld
   become: yes
@@ -91,6 +82,5 @@
 - name: mkdir /home/isucon/local for xbuild
   become: yes
   become_user: isucon
-  file:
-    path=/home/isucon/local
+  file: path=/home/isucon/local
     state=directory

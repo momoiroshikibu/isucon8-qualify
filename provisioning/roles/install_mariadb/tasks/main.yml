@@ -2,19 +2,20 @@
 - name: Install MariaDB
   become: yes
   become_user: root
-  yum:
+  apt:
     pkg: "{{ item }}"
-    state: installed
+    state: present
   with_items:
-    - mariadb
-    - mariadb-server
-    - mariadb-devel
-    - MySQL-python
+      - mariadb-server
+    - mariadb-client
+    - libmariadb-dev
+    - python3-mysqldb
 
 - name: Setup my.cnf
   become: yes
   become_user: root
   blockinfile:
+    create: yes
     marker: "# {mark} ANSIBLE MANAGED BLOCK mariadb"
     dest: /etc/my.cnf
     content: |
@@ -31,7 +32,7 @@
 
 - name: Create isucon user on MySQL
   become: yes
-  become_user: isucon
+  become_user: root
   mysql_user:
     login_user: root
     name: isucon

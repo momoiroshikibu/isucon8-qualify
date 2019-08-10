@@ -16,19 +16,19 @@
 - name: Install packages for PHP
   become: yes
   become_user: root
-  yum:
+  apt:
     pkg: "{{ item }}"
-    state: installed
+    state: present
   with_items:
-    - bzip2-devel
-    - libcurl-devel
-    - libicu-devel
-    - libjpeg-turbo-devel
-    - libpng-devel
-    - libtidy-devel
-    - libxml2-devel
-    - libxslt-devel
-    - readline-devel
+    - libbz2-dev
+    - libcurl4-gnutls-dev
+    - libicu-dev
+    - libjpeg-turbo8-dev
+    - libpng-dev
+    - libtidy-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libreadline-dev
     - re2c
 
 - name: Install PHP
