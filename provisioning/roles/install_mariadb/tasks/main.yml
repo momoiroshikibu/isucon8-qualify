@@ -8,8 +8,9 @@
   with_items:
     - mariadb-server
     - mariadb-client
+    - mysql-client
     - libmariadb-dev
-    - python3-mysqldb
+    - python-mysqldb
 
 - name: Setup my.cnf
   become: yes
