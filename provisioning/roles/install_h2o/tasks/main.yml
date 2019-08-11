@@ -31,3 +31,5 @@
   file:
     path: /var/run/h2o
     state: directory
+    owner: isucon
+    group: isucon
