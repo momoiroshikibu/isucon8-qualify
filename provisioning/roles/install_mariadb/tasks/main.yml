@@ -9,6 +9,7 @@
     - mariadb-server
     - mariadb-client
     - libmariadb-dev
+    - ibmariadbclient-dev
     - python-mysqldb
 
 - name: Setup my.cnf
