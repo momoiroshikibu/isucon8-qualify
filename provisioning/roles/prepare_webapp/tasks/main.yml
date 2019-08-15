@@ -43,6 +43,14 @@
     src: /etc/h2o/default-h2o.conf
     dest: /etc/h2o/h2o.conf
 
+- name: Put h2o.service
+  become: yes
+  become_user: root
+  copy:
+    src: h2o.service
+    dest: /lib/systemd/system/h2o.service
+    remote_src: yes
+
 - name: Put torb.nodejs.service
   become: yes
   become_user: root

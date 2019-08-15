@@ -1,0 +1,24 @@
+[Unit]
+Description=Optimized HTTP/1.x, HTTP/2 server
+Documentation=man:h2o(8)
+Documentation=file:/usr/share/doc/h2o/index.html
+Documentation=https://h2o.examp1e.net
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=CONFIG=/etc/h2o/h2o.conf
+EnvironmentFile=-/etc/default/h2o
+ExecStart=/usr/bin/h2o -c ${CONFIG} -m master
+ExecReload=/bin/kill -HUP $MAINPID
+ProtectSystem=full
+PrivateTmp=yes
+Restart=on-failure
+LimitNOFILE=65536
+RuntimeDirectory=h2o
+RuntimeDirectoryMode=0775
+PIDFile=/var/run/h2o/h2o.pid
+
+
+[Install]
+WantedBy=multi-user.target
