@@ -28,6 +28,7 @@
   blockinfile:
     marker: "# {mark} ANSIBLE MANAGED BLOCK nodejs"
     dest: /home/isucon/.bash_profile
+    create: yes
     content: |
       export PATH=/home/isucon/local/node/bin:$PATH
 
