@@ -49,7 +49,6 @@
     - automake
     - curl
     - dstat
-    - firewalld
     - libgdbm-dev
     - git
     - jq
